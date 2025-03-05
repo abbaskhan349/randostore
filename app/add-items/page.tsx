@@ -23,14 +23,12 @@ export default function AddItemPage() {
     const file = e.target.files?.[0]
     if (!file) return
 
-
-    if (file.size > 5 * 1024 * 1024) {                  // Check file size and limit it to 5mb
+    if (file.size > 5 * 1024 * 1024) {                   // Check file size (limit to 5MB)
       setError("Image size should be less than 5MB")
       return
     }
 
-    // Check file type
-    if (!file.type.startsWith("image/")) {
+    if (!file.type.startsWith("image/")) {                 // Check file type
       setError("Please upload an image file")
       return
     }
@@ -48,13 +46,29 @@ export default function AddItemPage() {
     e.preventDefault()
     setError("")
 
+    // =================             Enhanced validation to check image, name, price
     if (!name.trim()) {
       setError("Name is required")
       return
     }
 
-    if (!price.trim() || isNaN(Number.parseFloat(price))) {
+    if (!price.trim()) {
+      setError("Price is required")
+      return
+    }
+
+    if (isNaN(Number.parseFloat(price))) {
       setError("Price must be a valid number")
+      return
+    }
+
+    if (Number.parseFloat(price) <= 0) {
+      setError("Price must be greater than zero")
+      return
+    }
+
+    if (!imagePreview && img === "./img/placeholder.svg?height=300&width=300") {
+      setError("Please upload an image for the item")
       return
     }
 
