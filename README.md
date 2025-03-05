@@ -1,6 +1,6 @@
 # RandoStore
 
-RandoStore is a full-stack e-commerce application that allows users to browse items, add items to a cart, and manage their shopping experience.
+RandoStore's frontend is a modern e-commerce interface built with Next.js 14 that allows users to browse items, manage their shopping cart, and interact with the backend API for data retrieval and updates.
 
 ## Features
 
