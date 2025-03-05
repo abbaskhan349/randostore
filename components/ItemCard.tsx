@@ -30,4 +30,3 @@ export default function ItemCard({ item }: ItemCardProps) {
     </div>
   )
 }
-
